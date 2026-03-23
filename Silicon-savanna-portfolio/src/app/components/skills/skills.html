@@ -1,0 +1,37 @@
+<div class="skills-section d-flex flex-column align-items-center justify-content-center h-100 px-4">
+
+  <h3 class="section-title text-uppercase text-secondary mb-2">Skills</h3>
+  <p class="text-secondary small text-uppercase mb-5">Hover over a skill for current proficiency</p>
+
+  @if (skills$ | async; as skills) {
+    <div @slideInLeft class="skills-grid mb-4">
+      @for (skill of skills.slice(0, skills.length / 2); track skill.id) {
+        <div class="skill-item">
+          <div class="skill-img-wrapper">
+            <img [src]="skill.image" [alt]="skill.title" class="skill-img" />
+            <div class="skill-overlay">{{ skill.progress }}%</div>
+          </div>
+          <p class="skill-title">{{ skill.title }}</p>
+        </div>
+      }
+    </div>
+
+    <div @slideInRight class="skills-grid">
+      @for (skill of skills.slice(skills.length / 2); track skill.id) {
+        <div class="skill-item">
+          <div class="skill-img-wrapper">
+            <img [src]="skill.image" [alt]="skill.title" class="skill-img" />
+            <div class="skill-overlay">{{ skill.progress }}%</div>
+          </div>
+          <p class="skill-title">{{ skill.title }}</p>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="text-center text-secondary mt-5">
+      <div class="spinner-border text-warning" role="status"></div>
+      <p class="mt-2">Loading skills...</p>
+    </div>
+  }
+
+</div>

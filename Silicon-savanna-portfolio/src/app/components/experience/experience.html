@@ -1,0 +1,8 @@
+<div  class="experience-section d-flex flex-column align-items-center h-100 pt-5 px-4">
+  <h3 class="section-title text-uppercase text-secondary mb-5">Experience</h3>
+  <div class="experience-scroll d-flex gap-4 overflow-x-auto w-100 pb-4 px-3">
+    @for (experience of experiences; track experience.id) {
+      <app-experience-card [experience]="experience"></app-experience-card>
+    }
+  </div>
+</div>

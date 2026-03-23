@@ -1,0 +1,16 @@
+.main-container {
+  background-color: rgb(36, 36, 36);
+  color: white;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-color: #394897 black;
+  scrollbar-width: thin;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

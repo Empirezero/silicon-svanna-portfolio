@@ -1,0 +1,32 @@
+.about-section {
+  min-height: 100vh;
+  color: white;
+}
+
+.section-title {
+  letter-spacing: 20px;
+  font-size: 1.5rem;
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border: 2px solid #444;
+}
+
+.profile-img-wrapper {
+  animation: slideIn 1.8s ease forwards;
+}
+
+.bio-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 700px;
+  text-align: justify;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-200px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

@@ -1,0 +1,24 @@
+.footer {
+  background-color: transparent;
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+}
+
+.footer-btn {
+  color: #f7ab0a;
+  font-size: 2.5rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  animation: pulse 2s infinite;
+}
+
+.footer-btn:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

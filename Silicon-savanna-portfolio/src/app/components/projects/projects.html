@@ -1,0 +1,38 @@
+<div class="projects-section d-flex flex-column align-items-center h-100 pt-5 px-4 position-relative">
+
+  <h3 class="section-title text-uppercase text-secondary mb-5">Projects</h3>
+
+  @if (loading) {
+    <div class="text-center text-secondary mt-5">
+      <div class="spinner-border text-warning" role="status"></div>
+      <p class="mt-2">Loading projects...</p>
+    </div>
+  } @else {
+    <div class="projects-scroll d-flex overflow-x-auto w-100 pb-4 gap-0">
+      @for (project of projects; track project.id; let i = $index) {
+        <div class="project-card d-flex flex-column align-items-center justify-content-center flex-shrink-0 p-4 p-md-5">
+          <img [src]="project.image" [alt]="project.title" class="project-img mb-4" />
+          <div class="text-center">
+            <h4 class="fw-semibold mb-3">
+              <span class="text-decoration-underline underline-gold">
+                Case Study {{ i + 1 }} of {{ projects.length }}:
+              </span>
+              {{ project.title }}
+            </h4>
+            <div class="d-flex justify-content-center gap-2 mb-3 flex-wrap">
+              @for (tech of project.technologies; track tech.id) {
+                <img [src]="tech.image" [alt]="tech.title" [title]="tech.title" class="tech-icon" />
+              }
+            </div>
+            <p class="text-secondary">{{ project.summary }}</p>
+            <a [href]="project.link_to_build" target="_blank" class="btn-view mt-3 d-inline-block">
+              View Project
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <div class="bg-slash"></div>
+</div>

@@ -1,0 +1,36 @@
+<article class="experience-card d-flex flex-column align-items-center p-4 rounded-3 flex-shrink-0">
+  
+  <img
+    [src]="experience.company_image"
+    [alt]="experience.company"
+    class="company-img rounded-circle mb-4"
+  />
+
+  <div class="text-center px-2">
+    <h4 class="fw-light mb-1">{{ experience.job_title }}</h4>
+    <p class="text-warning mb-2">{{ experience.company }}</p>
+
+    <div class="d-flex gap-2 justify-content-center flex-wrap mb-3">
+      @for (tech of experience.technologies; track tech.id) {
+        <img
+          [src]="tech.image"
+          [alt]="tech.title"
+          class="tech-icon rounded-circle"
+          [title]="tech.title"
+        />
+      }
+    </div>
+
+    <p class="text-secondary text-uppercase small mb-3">
+      {{ experience.date_started }} —
+      {{ experience.is_current_working_here ? 'Present' : experience.date_ended }}
+    </p>
+
+    <ul class="text-start points-list">
+      @for (point of experience.points; track $index) {
+        <li class="mb-2">{{ point }}</li>
+      }
+    </ul>
+  </div>
+
+</article>

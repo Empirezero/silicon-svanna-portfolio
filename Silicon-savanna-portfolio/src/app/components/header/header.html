@@ -1,0 +1,13 @@
+<header class="header sticky-top d-flex align-items-center justify-content-between px-4 py-3">
+  <div @slideInLeft class="d-flex gap-2">
+    @for (social of socials; track social.id) {
+      <a [href]="social.url" target="_blank" class="social-icon" [title]="social.name">
+        <i [class]="social.icon"></i>
+      </a>
+    }
+  </div>
+  <a @slideInRight href="#contact" class="d-flex align-items-center gap-2 text-decoration-none">
+    <i class="bi bi-envelope social-icon"></i>
+    <span class="d-none d-md-inline text-secondary text-uppercase small">Get in Touch</span>
+  </a>
+</header>

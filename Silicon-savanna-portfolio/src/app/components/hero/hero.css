@@ -1,0 +1,88 @@
+.hero-section {
+  height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+  position: relative;
+}
+
+/* Typewriter cursor */
+.cursor {
+  color: #f7ab0a;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Profile image */
+.profile-img {
+  width: 128px;
+  height: 128px;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+
+/* Role text */
+.role-text {
+  letter-spacing: 15px;
+  font-size: 0.85rem;
+}
+
+/* Hero buttons */
+.hero-btn {
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 8px 20px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  background: transparent;
+}
+
+.hero-btn:hover {
+  border-color: #f7ab0a;
+  color: #f7ab0a;
+}
+
+/* Background circles */
+.bg-circles {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.circle-ping {
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.circle-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.c1 { width: 200px; height: 200px; border-color: #333; }
+.c2 { width: 300px; height: 300px; border-color: #333; }
+.c3 { width: 450px; height: 450px; border-color: #333; }
+.c4 { width: 650px; height: 650px; border-color: #5317ba; }
+.c5 { width: 100px; height: 100px; border-color: #333; }
+
+@keyframes ping {
+  75%, 100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
