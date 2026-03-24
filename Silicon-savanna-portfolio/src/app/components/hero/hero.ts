@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { fadeIn, slideInUp, backgroundCircles, scaleIn } from '../../animations/animations';
+import { ApiService } from '../../services/api';
 
 @Component({
   selector: 'app-hero',
@@ -11,21 +12,37 @@ import { fadeIn, slideInUp, backgroundCircles, scaleIn } from '../../animations/
   animations: [fadeIn, slideInUp, backgroundCircles, scaleIn]
 })
 export class Hero implements OnInit, OnDestroy {
-  words = [
-    "Hi, my name is Dancan Ngugi",
-    "I'm a guy who loves gaming.ts",
-    "<ButLovesToCodeMore/>",
-  ];
+  pageInfo: any = null;
+  words: string[] = [];
   displayText = '';
   currentWordIndex = 0;
   currentCharIndex = 0;
   isDeleting = false;
   private timeout: any;
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone, private apiService: ApiService) {}
 
   ngOnInit() {
-    this.ngZone.runOutsideAngular(() => this.type());
+    this.apiService.getPageInfo().subscribe({
+      next: (data) => {
+        this.pageInfo = data;
+        this.words = [
+          `Hi, my name is ${data.title}`,
+          "I'm a guy who loves gaming.ts",
+          "<ButLovesToCodeMore/>",
+        ];
+        this.ngZone.runOutsideAngular(() => this.type());
+      },
+      error: (err) => {
+        console.error('Error fetching page info:', err);
+        this.words = [
+          "Hi, my name is Dancan Ngugi",
+          "I'm a guy who loves gaming.ts",
+          "<ButLovesToCodeMore/>",
+        ];
+        this.ngZone.runOutsideAngular(() => this.type());
+      }
+    });
   }
 
   type() {

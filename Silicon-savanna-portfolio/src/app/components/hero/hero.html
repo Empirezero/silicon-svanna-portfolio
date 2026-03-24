@@ -6,16 +6,18 @@
     <div class="circle circle-pulse c4"></div>
     <div class="circle c5"></div>
   </div>
+
   <img
     @scaleIn
     class="profile-img rounded-circle"
-    src="assets/profile.jpg"
-    alt="Dancan Ngugi"
+    [src]="pageInfo?.hero_image || 'assets/profile.jpg'"
+    [alt]="pageInfo?.title || 'Dancan Ngugi'"
     onerror="this.src='https://ui-avatars.com/api/?name=Dancan+Ngugi&size=128&background=333&color=fff'"
   />
+
   <div @slideInUp class="hero-text z-2 mt-3">
     <h2 class="role-text text-uppercase text-secondary tracking-wide mb-2">
-      Full-Stack Developer
+      {{ pageInfo?.role || 'Full-Stack Developer' }}
     </h2>
     <h1 class="display-6 fw-semibold px-3">
       <span>{{ displayText }}</span>

@@ -30,7 +30,6 @@
         type="text"
         placeholder="Name"
         class="contact-input"
-        required
       />
       <input
         [(ngModel)]="form.email"
@@ -38,7 +37,6 @@
         type="email"
         placeholder="Email"
         class="contact-input"
-        required
       />
     </div>
     <input
@@ -54,11 +52,10 @@
       placeholder="Message"
       class="contact-input"
       rows="4"
-      required
     ></textarea>
-    <button type="submit" [disabled]="loading" class="submit-btn">
-      {{ loading ? 'Sending...' : 'Send Message' }}
-    </button>
+    <button type="button" (click)="sendEmail()" [disabled]="loading" class="submit-btn">
+  {{ loading ? 'Sending...' : 'Send Message' }}
+</button>
   </form>
 
 </div>
