@@ -1,15 +1,27 @@
-<div @fadeIn class="about-section d-flex flex-column align-items-center justify-content-center h-100 px-4">
+<div class="about-section d-flex flex-column align-items-center justify-content-center h-100 px-4">
   <h3 class="section-title text-uppercase text-secondary tracking-wide mb-5">About</h3>
-  <div @slideInLeft class="profile-img-wrapper mb-4">
-    <img
-      src="assets/profile.jpg"
-      alt="Dancan Ngugi"
-      class="rounded-circle profile-img"
-      onerror="this.src='https://ui-avatars.com/api/?name=Dancan+Ngugi&size=160&background=333&color=fff'"
-    />
-  </div>
-  <div @fadeIn class="text-center">
-    <h4 class="fw-semibold mb-3">{{ name }}</h4>
-    <p class="text-secondary px-3 px-md-5 bio-text">{{ bio }}</p>
-  </div>
+
+  @if (loading) {
+    <div class="text-center text-secondary mt-5">
+      <div class="spinner-border text-warning" role="status"></div>
+      <p class="mt-2">Loading...</p>
+    </div>
+  } @else {
+    <div class="profile-img-wrapper mb-4">
+      <img
+        [src]="pageInfo?.hero_image || 'assets/profile.jpg'"
+        [alt]="pageInfo?.title || 'Dancan Ngugi'"
+        class="rounded-circle profile-img"
+        onerror="this.src='https://ui-avatars.com/api/?name=Dancan+Ngugi&size=160&background=333&color=fff'"
+      />
+    </div>
+
+    <div @fadeIn class="text-center">
+      <h4 class="fw-semibold mb-3">{{ pageInfo?.title || 'Dancan Ngugi' }}</h4>
+      <p class="text-secondary px-3 px-md-5 bio-text">
+        {{ pageInfo?.background_information || 'No information available.' }}
+      </p>
+    </div>
+  }
+
 </div>

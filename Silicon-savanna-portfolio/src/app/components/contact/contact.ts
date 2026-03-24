@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { fadeIn, slideInUp } from '../../animations/animations';
 import { ApiService } from '../../services/api';
 
@@ -23,11 +23,16 @@ export class Contact {
 
   constructor(private apiService: ApiService) {}
 
-  sendEmail() {
+  sendEmail(contactForm?: NgForm) {
+
+       console.log('Button clicked!');
+    console.log('Form data:', this.form);
     this.loading = true;
     this.apiService.sendContact(this.form).subscribe({
       next: () => {
+        console.log('Message sent successfully');
         alert('Message sent successfully!');
+        if (contactForm) contactForm.resetForm();
         this.form = { name: '', email: '', subject: '', message: '' };
         this.loading = false;
       },

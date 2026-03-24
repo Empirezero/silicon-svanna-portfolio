@@ -21,7 +21,9 @@ export class ApiService {
   getExperiences(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/experiences`);
   }
-
+getPageInfo(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/page-info`);
+}
   sendContact(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/contact`, data);
   }
